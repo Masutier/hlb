@@ -5,7 +5,6 @@ from datetime import datetime
 from flask import render_template as render
 from flask import Flask, flash, redirect, request, url_for
 from flask_sqlalchemy import SQLAlchemy
-from functions import techniciansAll
 
 app = Flask(__name__)
 
@@ -65,12 +64,17 @@ class NewTechnician(db.Model):
 def home():
     techs = NewTechnician.query.all()
     departamentos = []
+    technicians = []
 
     if request.method == 'POST':
         incomming = request.form["depto"]
         deptos = NewTechnician.query.filter_by(departamentoPredio=incomming).all()
-        technicians = techniciansAll(incomming)
-        
+
+        for tech in deptos:
+            if tech.nombreFacilitador not in technicians:
+                technicians.append(tech.nombreFacilitador)
+        technicians.sort()
+
         return render('departamento.html', incomming=incomming, deptos=deptos, technicians=technicians)
     else:
 
