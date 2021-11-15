@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    
+<div class="container">
+    <div class="row">
+        <div class="col-3 mx-auto mb-3">
+            <h3>upCsvFile File</h3>
+            <form action="/upCsvFile" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="inputFile" class="form-label">Input File</label>
+                    <input class="form-control" type="file" name="inputFile">
+                </div>
+
+                <button class="btn btn-primary mt-3" type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="col-3 mx-auto mb-3">
+            <h3>upn new CsvFile File</h3>
+            <form action="/upNewCsvFile" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="inputNewFile" class="form-label">Input File</label>
+                    <input class="form-control" type="file" name="inputNewFile">
+                </div>
+
+                <button class="btn btn-primary mt-3" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-3 mx-auto mb-3">
+        <h3>Departamentos en CSV</h3>
+        <ul>
+            <form action="#" method="POST">
+            {% for i in departamentos %}
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="depto" value="{{i}}" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        {{i}}
+                    </label>
+                </div>
+            {% endfor %}
+            <button class="btn btn-primary mt-3" type="submit">Submit</button>
+            </form>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
