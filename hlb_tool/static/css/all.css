@@ -5,3 +5,6 @@
 .c {
     text-align: center !important;
 }
+.color_red {
+    color: firebrick;
+}

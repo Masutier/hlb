@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    
+<div class="container">
+    <h3>Register Section</h3>
+    <form action="/register" method="POST">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Name</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="name" placeholder="Name">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="Email">
+        </div>
+        <label for="exampleDataList" class="form-label">Datalist example</label>
+        <input class="form-control" list="datalistOptions" id="exampleDataList" name="dorm" placeholder="Type to search...">
+        <datalist id="datalistOptions">
+            <option desabled selected value="">Room</option>
+            <option value="Room 01">Room 01</option>
+            <option value="Room 02">Room 02</option>
+            <option value="Room 03">Room 03</option>
+        </datalist>
+
+        <input class="btn btn-primary btn-sm mt-3" type="submit" value="Register">
+    </form>
+</div>
+
+{% endblock %}

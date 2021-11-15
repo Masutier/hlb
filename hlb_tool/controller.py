@@ -100,6 +100,11 @@ def technicsAll():
     return render('technicians.html', technicians=technicians)
 
 
+@app.route('/importCsv')
+def importCsv():
+
+    return render("importCsv.html")
+
 @app.route('/upCsvFile', methods=['POST'])
 def upCsvFile():
     openFile = request.files['inputFile']
@@ -135,14 +140,15 @@ def upCsvFile():
 
 @app.route('/upNewCsvFile', methods=['POST'])
 def upNewCsvFile():
-    techs = Technician.query.all()
+    newTechs = NewTechnician.query.all()
+    techs = set(newTechs)
     openFile = request.files['inputNewFile']
     technicianFile = []
 
     if request.files['inputNewFile'].filename == '':
         flash('No File or wrong extenssion ".csv"')
 
-        return redirect(url_for("/"))
+        return redirect(url_for("/importCsv"))
 
     else:
 
@@ -154,6 +160,11 @@ def upNewCsvFile():
 
         techList.close()
 
+    for i in techs:
+        print(i.id)
+        to_delete = NewTechnician.query.filter_by(id=int(i.id)).delete()
+        db.session.commit()
+
     for item in technicianFile:
         technician = NewTechnician(idProductor=item[0], nombreProductor=item[3]
         , nombrePredio=item[25], departamentoPredio=item[36]
@@ -164,7 +175,7 @@ def upNewCsvFile():
 
     flash('File was successfully loaded')
 
-    return render('index.html')
+    return redirect(url_for('/comper'))
 
 
 @app.route("/comper")

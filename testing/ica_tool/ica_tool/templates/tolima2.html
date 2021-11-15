@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="container">
+    <div class="col-12 mx-auto">
+        <h1 class="col-4 mx-auto c">Lista de Tecnicos</h1>
+    </div>
+
+    <div class="col-12 mx-auto">
+        <a class="btn btn-primary mx-auto mb-2 c" href="/">Return</a>
+    </div>
+
+    <div class="col-12 mx-auto "></div>
+
+    <table class="table table-dark table-striped ">
+        <tr>
+            <th>NOMBREFACILITADOR</th>
+            <th>DEPARTAMENTOCONTRATISTA</th>
+            <th>IDPRODUCTOR</th>
+            <th>NOMBREPRODUCTOR</th>
+            <th>NOMBREPREDIO</th>
+            <th>DEPARTAMENTOPREDIO</th>
+            <th>MUNICIPIOPREDIO</th>
+        </tr>
+        {% for tech in techFileTolimaAll|sort(attribute='5')|sort(attribute='4') %}
+            <tr>
+                <td>{{ tech[5] }}</td>
+                <td>{{ tech[6] }}</td>
+                <td>{{ tech[0] }}</td>
+                <td>{{ tech[1] }}</td>
+                <td>{{ tech[2] }}</td>
+                <td>{{ tech[3] }}</td>
+                <td>{{ tech[4] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

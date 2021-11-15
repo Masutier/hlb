@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="container">
+    <div class="col-12 mx-auto">
+        <h1 class="col-4 c">Lista de Tecnicos</h1>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a class="btn btn-primary mb-2 c" href="/">Return</a>
+        </div>
+    </div>
+
+    <div class="col-12 mx-auto "></div>
+
+    <table class="table table-dark table-striped ">
+        <tr>
+            <th>IDPRODUCTOR</th>
+            <th>NOMBREPRODUCTOR</th>
+            <th>NOMBREPREDIO</th>
+            <th>DEPARTAMENTOPREDIO</th>
+            <th>MUNICIPIOPREDIO</th>
+            <th>NOMBREFACILITADOR</th>
+            <th>DEPARTAMENTOCONTRATISTA</th>
+        </tr>
+        {% for tech in techFileAll %}
+            <tr>
+                <td>{{ tech[0] }}</td>
+                <td>{{ tech[3] }}</td>
+                <td>{{ tech[25] }}</td>
+                <td>{{ tech[36] }}</td>
+                <td>{{ tech[37] }}</td>
+                <td>{{ tech[40] }}</td>
+                <td>{{ tech[41] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
